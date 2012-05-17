@@ -70,6 +70,16 @@ class Company
     protected $jobSlots;
 
     /**
+     * @var int
+     */
+    protected $jobSlotsUsed;
+
+    /**
+     * @var int
+     */
+    protected $jobSlotsAvailable;
+
+    /**
      * Constructor
      *
      * @param ResflyApi $resflyApi
@@ -94,6 +104,8 @@ class Company
     {
         $this->id = $data['company']['id'];
         $this->dateCreated = strtotime($data['company']['date_created']);
+        $this->jobSlotsUsed = $data['company']['job_slots_used'];
+        $this->jobSlotsAvailable = $data['company']['job_slots_available'];
         $this->setName($data['company']['name'])
             ->setType($data['company']['type'])
             ->setUrl($data['company']['url'])
@@ -222,6 +234,21 @@ class Company
     public function getJobSlots()
     {
         return $this->jobSlots;
+    }
+
+    /**
+     * Get the number of job slots currently in use for the company
+     *
+     * @return int
+     */
+    public function getJobSlotsUsed()
+    {
+        return $this->jobSlotsUsed;
+    }
+
+    public function getJobSlotsAvailable()
+    {
+        return $this->jobSlotsAvailable;
     }
 
     /**
