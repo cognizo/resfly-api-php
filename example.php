@@ -27,7 +27,7 @@
 
 include 'Resfly/ResflyApi.php';
 
-$resflyApi = new \Resfly\ResflyApi('http://api.resfly.dev', 'ad0491611c7347fedcff64c7b1fda2ff7d37ac68');
+$resflyApi = new \Resfly\ResflyApi('https://api.resfly.com', 'API-KEY');
 
 // Create a company
 $company = new \Resfly\Company($resflyApi);
