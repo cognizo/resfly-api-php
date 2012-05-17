@@ -1,4 +1,4 @@
-resfly-api-php
+Resfly API PHP
 ==============
 
-Resfly API PHP
+Reference implementation of a PHP client for the Resfly API.
