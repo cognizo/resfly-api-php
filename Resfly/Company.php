@@ -302,6 +302,23 @@ class Company
     }
 
     /**
+     * Suspend the company
+     *
+     * @return bool
+     */
+    public function suspend()
+    {
+        $response = $this->resflyApi->makeRequest('/companies/'.$this->getId().'/suspend', 'PUT');
+
+        if ($response->getStatusCode() === 200)
+        {
+            return true;
+        }
+
+        return false;
+    }
+
+    /**
      * Get all jobs for the company
      *
      * @return array
