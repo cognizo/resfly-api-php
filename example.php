@@ -96,6 +96,9 @@ if ($job->close())
 // Delete the job
 $job->delete();
 
+// Suspend the company and close all published jobs
+$company->suspend();
+
 // Error checking
 $company = new \Resfly\Company($resflyApi);
 if (!$company->save())
