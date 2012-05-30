@@ -34,6 +34,9 @@ class Company
     const TYPE_INTERNAL = 'internal';
     const TYPE_AGENCY   = 'agency';
 
+    const STATUS_ACTIVE    = 'active';
+    const STATUS_SUSPENDED = 'suspended';
+
     /**
      * @var ResflyApi
      */
@@ -53,6 +56,11 @@ class Company
      * @var string
      */
     protected $name;
+
+    /**
+     * @var string
+     */
+    protected $status;
 
     /**
      * @var string
@@ -104,12 +112,13 @@ class Company
     {
         $this->id = $data['company']['id'];
         $this->dateCreated = strtotime($data['company']['date_created']);
+        $this->status = $data['company']['status'];
         $this->jobSlotsUsed = $data['company']['job_slots_used'];
         $this->jobSlotsAvailable = $data['company']['job_slots_available'];
         $this->setName($data['company']['name'])
-            ->setType($data['company']['type'])
-            ->setUrl($data['company']['url'])
-            ->setJobSlots($data['company']['job_slots']);
+             ->setType($data['company']['type'])
+             ->setUrl($data['company']['url'])
+             ->setJobSlots($data['company']['job_slots']);
     }
 
     /**
@@ -123,6 +132,7 @@ class Company
             'id' => $this->getId(),
             'name' => $this->getName(),
             'type' => $this->getType(),
+            'status' => $this->getStatus(),
             'url' => $this->getUrl(),
             'job_slots' => $this->getJobSlots()
         ));
@@ -168,6 +178,16 @@ class Company
     public function getName()
     {
         return $this->name;
+    }
+
+    /**
+     * Get the company's status
+     *
+     * @return string
+     */
+    public function getStatus()
+    {
+        return $this->status;
     }
 
     /**
